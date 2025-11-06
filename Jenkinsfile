@@ -4,8 +4,14 @@ pipeline {
     parameters {
         choice(
             name: 'BRANCH_VERSION',
-            choices: ['3.3.3', '3.4.0', '3.5.0'],
-            description: 'select the branch version to build')
+            choices: ['1.1', '1.2', '1.3', '1.4', '1.5'],
+            description: 'select the branch version to build'
+            )
+            booleanParam(
+            name: 'RUN_TESTS',
+                defaultValue: true,
+                description: 'Run tests after building?'
+            )
     }
     stages {
         stage('Build') {
