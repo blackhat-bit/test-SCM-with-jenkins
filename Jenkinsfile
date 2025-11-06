@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'BRANCH_VERSION', defaultValue: '3.3.3', description: 'specify branch version')
+        choice(
+            name: 'BRANCH_VERSION',
+            choices: ['3.3.3', '3.4.0', '3.5.0'],
+            description: 'select the branch version to build')
     }
     stages {
         stage('Build') {
